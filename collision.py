@@ -130,13 +130,15 @@ p.setCollisionFilterPair(obj, wall_1, -1, -1, enableCol)
 f = 1
 for i in range(3000):
     pos, orn = p.getBasePositionAndOrientation(obj)
-    pos1, orn1 = p.getBasePositionAndOrientation(wall)
+    print('degree: ',[180*element/math.pi for element in p.getEulerFromQuaternion(orn)])
+    # pos1, orn1 = p.getBasePositionAndOrientation(wall)
+    
     if f:
-        time.sleep(2)
+        time.sleep(3)
         for j in range(5):
             p.applyExternalForce(obj, -1, forceObj=[-1000,0,0], posObj=pos, flags=p.WORLD_FRAME)
             f=0
     print("obj : ",pos, orn)
-    print("wall : ", pos1, orn1)
+    # print("wall : ", pos1, orn1)
     time.sleep(0.01)
     p.stepSimulation()
